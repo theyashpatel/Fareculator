@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var noofpassengersegment: UISegmentedControl!
     
-    //@IBOutlet weak var noofpassenger: UITextField!            // changes because of segmented control
+    //@IBOutlet weak var noofpassenger: UITextField!
     
     @IBOutlet weak var distancetravelled: UITextField!
     
