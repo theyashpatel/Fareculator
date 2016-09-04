@@ -39,7 +39,7 @@ class ViewController: UIViewController {
                 outputlabel.text = "\(round(costpertrip*100)/100) ₹/person"
                 }
             else {
-//                noofpassenger = ""
+//                noofpassenger = ""            // changes due to segmented control
                 distancetravelled.text = ""
                 averageofcar.text = ""
                 fuelcost.text = ""
@@ -51,7 +51,7 @@ class ViewController: UIViewController {
             }
         }
         else {
-//            noofpassenger.text = ""
+//            noofpassenger.text = ""           // changes due to segmented control
             distancetravelled.text = ""
             averageofcar.text = ""
             fuelcost.text = ""
