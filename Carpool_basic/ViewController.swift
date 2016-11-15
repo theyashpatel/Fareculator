@@ -9,8 +9,14 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    
+    override func viewDidLoad() {
+        animateView()
+    }
 
     
+    @IBOutlet weak var developerLogo: UIImageView!
     
     @IBOutlet weak var noofpassengersegment: UISegmentedControl!
     
@@ -24,11 +30,20 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var outputlabel: UILabel!
     
-    @IBAction func dismiss(sender: AnyObject) {
+    func animateView() {
+        
+        UIView.animate(withDuration: 5) {
+            self.developerLogo.alpha = 1
+        }
+        
+    }
+    
+    
+    @IBAction func dismiss(_ sender: AnyObject) {
         self.fuelcost.resignFirstResponder()
     }
     
-    @IBAction func buttonpressed(sender: UIButton) {
+    @IBAction func buttonpressed(_ sender: UIButton) {
         
         let noofpassenger :String? = String(noofpassengersegment.selectedSegmentIndex + 1)
         
@@ -44,9 +59,9 @@ class ViewController: UIViewController {
                 averageofcar.text = ""
                 fuelcost.text = ""
                 self.outputlabel.text = "Enter Integer"
-                delay(2.0){
-                    self.outputlabel.text = "Developed by Yash"
-                }
+//                delay(2.0){
+//                    self.outputlabel.text = "Developed by Yash"
+//                }
 
             }
         }
@@ -57,14 +72,15 @@ class ViewController: UIViewController {
             fuelcost.text = ""
             outputlabel.text = "Enter all fields"
             
-            delay(2.0){
-                self.outputlabel.text = "Developed by Yash"
-            }
+//            delay(2.0){
+//                self.outputlabel.text = "Developed by Yash"
+//            }
         }
         
+        self.view.endEditing(true)
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
     
@@ -72,13 +88,13 @@ class ViewController: UIViewController {
 }
 
 
-func calculatecost(noofpassenger:Double , dist:Double , avg:Double , fuel:Double) -> Double {
+func calculatecost(_ noofpassenger:Double , dist:Double , avg:Double , fuel:Double) -> Double {
     let cost = ((dist/avg)*fuel)/noofpassenger
     return cost
 }
 
-func delay(time:Double , closure : () -> () ) {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(time * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), closure)
+func delay(_ time:Double , closure : @escaping () -> () ) {
+    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(time * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: closure)
 }
 
 func isdouble(Arrayofstrings a:String ...) -> Bool {
@@ -95,3 +111,5 @@ func isdouble(Arrayofstrings a:String ...) -> Bool {
     print (isdub)
     return isdub
 }
+
+
